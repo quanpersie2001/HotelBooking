@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">HotelBooking</string>
+    <string name="network_unavailable">Network Unavailable</string>
+    <string name="user_exist">User is exist or email is not available</string>
+    <string name="name_required">Username is required</string>
+    <string name="email_required">Email is required</string>
+    <string name="pass_than_6">Password must be than 6 character</string>
+    <string name="pass_not_match">Password do not match</string>
+    <string name="pass_required">Password is required</string>
+    <string name="email_pass_wrong">Email or Password is wrong</string>
+    <string name="title_activity_user_home">UserHomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="title_activity_admin_home">AdminHomeActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
