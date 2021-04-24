@@ -114,7 +114,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 hashMap.put(Utils.USER_NAME, username);
                                 hashMap.put(Utils.EMAIL, email);
                                 hashMap.put(Utils.AVATAR, Utils.DEFAULT);
-                                hashMap.put(Utils.IS_USER,"1");
+                                hashMap.put(Utils.IS_ADMIN,"FALSE");
 
                                 documentReference.set(hashMap);
 

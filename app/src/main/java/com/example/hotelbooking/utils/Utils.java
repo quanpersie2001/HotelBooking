@@ -8,7 +8,7 @@ import android.net.NetworkInfo;
 import android.os.Build;
 
 public class Utils {
-    public static final String IS_USER = "isUser";
+    public static final String IS_ADMIN = "isAdmin";
     public static final String TAG = "TAG";
     public static final String DEFAULT = "default";
     public static final String AVATAR = "avatar";

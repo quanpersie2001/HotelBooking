@@ -1,22 +1,35 @@
 package com.example.hotelbooking.model;
 
-public class HotelModel {
-    int image;
-    String name, price, address;
+public class Hotel {
+    String  purl, name, price, address, description;
 
-    public HotelModel(int image, String name, String price, String address) {
-        this.image = image;
+    Hotel()
+    {
+
+    }
+
+    public Hotel(String purl, String name, String price, String address, String description) {
+        this.description = description;
+        this.purl = purl;
         this.name = name;
         this.price = price;
         this.address = address;
     }
 
-    public int getImage() {
-        return image;
+    public String getDescription() {
+        return description;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getPurl() {
+        return purl;
+    }
+
+    public void setPurl(String purl) {
+        this.purl = purl;
     }
 
     public String getName() {

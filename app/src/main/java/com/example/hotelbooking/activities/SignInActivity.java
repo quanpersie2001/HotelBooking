@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.hotelbooking.R;
 import com.example.hotelbooking.model.Admin;
+import com.example.hotelbooking.model.User;
 import com.example.hotelbooking.utils.Utils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -39,16 +40,6 @@ public class SignInActivity extends AppCompatActivity {
     private Context context;
     FirebaseFirestore fStore;
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mAuth = FirebaseAuth.getInstance();
-        if(mAuth.getCurrentUser() != null){
-            Intent intent = new Intent(context, UserMainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,16 +134,26 @@ public class SignInActivity extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 Log.d(Utils.TAG, "onSuccess" + documentSnapshot.getData());
 
-                if(documentSnapshot.getString("isAdmin") != null) {
-                    startActivity(new Intent(context, AdminMainActivity.class));
+                if(documentSnapshot.getString(Utils.IS_ADMIN).equals("TRUE")) {
+                    startActivity(new Intent(context, TestActivity.class));
                     finish();
                 }
-                if(documentSnapshot.getString("isUser") != null){
-                    startActivity(new Intent(context, AdminMainActivity.class));
+                if(documentSnapshot.getString(Utils.IS_ADMIN).equals("FALSE")){
+                    startActivity(new Intent(context, UserMainActivity.class));
                     finish();
                 }
             }
         });
 
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth = FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser() != null){
+            startActivity(new Intent(context, UserMainActivity.class));
+            finish();
+
+        }
     }
 }
