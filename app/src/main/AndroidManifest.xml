@@ -9,8 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HotelBooking">
-        <activity android:name=".activities.TestActivity"></activity>
-        <activity android:name=".AdminMainActivity" />
+        <activity android:name=".activities.AdminMainActivity" />
         <activity android:name=".activities.EditProfileActivity" />
         <activity android:name=".activities.SplashScreen">
             <intent-filter>

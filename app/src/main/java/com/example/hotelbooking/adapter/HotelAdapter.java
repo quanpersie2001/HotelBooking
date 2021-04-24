@@ -1,6 +1,5 @@
 package com.example.hotelbooking.adapter;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -22,7 +20,6 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 public class HotelAdapter extends FirebaseRecyclerAdapter<Hotel, HotelAdapter.viewHolder> {
 
-    Context context;
 
     public HotelAdapter(@NonNull FirebaseRecyclerOptions<Hotel> options) {
         super(options);
@@ -39,9 +36,9 @@ public class HotelAdapter extends FirebaseRecyclerAdapter<Hotel, HotelAdapter.vi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, UserDetailHotelFragment.class);
+                Intent intent = new Intent(v.getContext(), UserDetailHotelFragment.class);
                 intent.putExtra("HotelKey", getRef(position).getKey());
-                context.startActivity(intent);
+                v.getContext().startActivity(intent);
             }
         });
 
@@ -69,5 +66,6 @@ public class HotelAdapter extends FirebaseRecyclerAdapter<Hotel, HotelAdapter.vi
             tvAddress = itemView.findViewById(R.id.tvAddress);
 
         }
+
     }
 }

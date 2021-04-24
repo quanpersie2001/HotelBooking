@@ -135,7 +135,7 @@ public class SignInActivity extends AppCompatActivity {
                 Log.d(Utils.TAG, "onSuccess" + documentSnapshot.getData());
 
                 if(documentSnapshot.getString(Utils.IS_ADMIN).equals("TRUE")) {
-                    startActivity(new Intent(context, TestActivity.class));
+                    startActivity(new Intent(context, AdminMainActivity.class));
                     finish();
                 }
                 if(documentSnapshot.getString(Utils.IS_ADMIN).equals("FALSE")){
@@ -151,8 +151,30 @@ public class SignInActivity extends AppCompatActivity {
         super.onStart();
         mAuth = FirebaseAuth.getInstance();
         if(mAuth.getCurrentUser() != null){
-            startActivity(new Intent(context, UserMainActivity.class));
-            finish();
+            DocumentReference df = fStore.collection("users").document(mAuth.getCurrentUser().getUid());
+            df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                    if(documentSnapshot.getString(Utils.IS_ADMIN).equals("TRUE")) {
+                        startActivity(new Intent(context, AdminMainActivity.class));
+                        finish();
+                    }
+
+                    if(documentSnapshot.getString(Utils.IS_ADMIN).equals("FALSE")){
+                        startActivity(new Intent(context, UserMainActivity.class));
+                        finish();
+                    }
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    mAuth.signOut();
+                    startActivity(new Intent(context, SignInActivity.class));
+                    finish();
+                }
+            });
 
         }
     }
