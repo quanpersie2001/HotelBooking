@@ -41,7 +41,6 @@ public class UserDetailHotelActivity extends AppCompatActivity {
         tvName = findViewById(R.id.tvName);
         tvName2 = findViewById(R.id.tvName2);
         tvDescription = findViewById(R.id.tvDescription);
-        btnPickRoom = findViewById(R.id.btnPickRoom);
         tvRank = findViewById(R.id.tvRank);
         tvAddress = findViewById(R.id.tvAddress);
         ivBack = findViewById(R.id.ivBack);
@@ -76,6 +75,7 @@ public class UserDetailHotelActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), UserMainActivity.class));
+                finish();
             }
         });
 

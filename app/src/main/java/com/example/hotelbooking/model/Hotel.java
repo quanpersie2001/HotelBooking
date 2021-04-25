@@ -1,20 +1,25 @@
 package com.example.hotelbooking.model;
 
+import java.util.ArrayList;
+
 public class Hotel {
     String  purl, name, price, address, description;
+    ArrayList<Room> rooms;
 
     Hotel()
     {
 
     }
 
-    public Hotel(String purl, String name, String price, String address, String description) {
+    public Hotel(String purl, String name, String price, String address, String description, ArrayList<Room> rooms) {
         this.description = description;
         this.purl = purl;
         this.name = name;
         this.price = price;
         this.address = address;
+        this.rooms = rooms;
     }
+
 
     public String getDescription() {
         return description;

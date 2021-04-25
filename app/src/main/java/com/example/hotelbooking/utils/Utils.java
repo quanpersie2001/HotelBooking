@@ -9,6 +9,8 @@ import android.os.Build;
 
 public class Utils {
     public static final String IS_ADMIN = "isAdmin";
+    public static final String PHONE_NUMBER = "phone";
+    public static final String BIRTHDAY = "birthday";
     public static final String TAG = "TAG";
     public static final String DEFAULT = "default";
     public static final String AVATAR = "avatar";
@@ -19,13 +21,6 @@ public class Utils {
     public static final String PASSWORD_DIALOG_TYPE = "password type";
     public static final String ID = "id";
     public static final String EMAIL = "email";
-    public static final String SENDER_ID = "sender";
-    public static final String RECEIVER_ID = "receiver";
-    public static final String TOKENS = "tokens";
-    public static final String ICON = "icon";
-    public static final String TITLE = "title";
-    public static final String BODY = "body";
-    public static final String URL = "https://fcm.googleapis.com";
     public static boolean isNetworkAvailable(Context context) {
         if (context == null) {
             return false;
