@@ -14,7 +14,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp"
         android:layout_marginBottom="32dp"
         android:background="@drawable/button"
         android:fontFamily="@font/bold"
@@ -23,8 +22,7 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAbout" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/bigAvatar"
@@ -37,56 +35,4 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/ic_default_avatar"/>
 
-    <TextView
-        android:id="@+id/tvEditProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/semi_bold"
-        android:text="Edit Your Profile"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/bigAvatar"
-        app:layout_constraintStart_toStartOf="@+id/bigAvatar"
-        app:layout_constraintTop_toBottomOf="@+id/bigAvatar" />
-
-    <TextView
-        android:id="@+id/tvChagePass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/semi_bold"
-        android:text="Change Your Password"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/tvEditProfile"
-        app:layout_constraintStart_toStartOf="@+id/tvEditProfile"
-        app:layout_constraintTop_toBottomOf="@+id/tvEditProfile" />
-
-    <TextView
-        android:id="@+id/tvBookHistory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/semi_bold"
-        android:text="Booking History"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/tvChagePass"
-        app:layout_constraintStart_toStartOf="@+id/tvChagePass"
-        app:layout_constraintTop_toBottomOf="@+id/tvChagePass" />
-
-    <TextView
-        android:id="@+id/tvAbout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/semi_bold"
-        android:text="About"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/tvBookHistory"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="@+id/tvBookHistory"
-        app:layout_constraintTop_toBottomOf="@+id/tvBookHistory" />
 </androidx.constraintlayout.widget.ConstraintLayout>

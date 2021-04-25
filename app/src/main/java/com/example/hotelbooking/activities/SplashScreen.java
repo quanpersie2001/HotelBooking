@@ -23,7 +23,7 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 loadData();
             }
-        }, 1000);
+        }, 1500);
     }
 
     private void loadData() {

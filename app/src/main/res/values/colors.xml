@@ -6,4 +6,6 @@
     <color name="gray">#B2B2B2</color>
     <color name="red">#FF0000</color>
     <color name="lightGray">#DCDCDC</color>
+    <color name="gold">#FFCC00</color>
+    <color name="green">#66cc33</color>
 </resources>
