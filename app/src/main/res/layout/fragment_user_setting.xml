@@ -49,13 +49,13 @@
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnEditProfile"
+                android:id="@+id/btnProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:background="@drawable/button_square"
                 android:fontFamily="@font/bold"
-                android:text="EDIT PROFILE"
+                android:text="PROFILE"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 

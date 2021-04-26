@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.hotelbooking.R;
-import com.example.hotelbooking.adminfragment.AdminHomeFragment;
 
 public class AddHotelActivity extends AppCompatActivity {
 
@@ -20,12 +19,12 @@ public class AddHotelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_hotel);
-        txtHotelName = findViewById(R.id.txtHotelName);
-        txtHotelAddress = findViewById(R.id.txtHotelAddress);
-        txtDescription = findViewById(R.id.txtDescription);
-        txtPrice = findViewById(R.id.txtPrice);
+        txtHotelName = findViewById(R.id.txtUsername);
+        txtHotelAddress = findViewById(R.id.txtFullName);
+        txtDescription = findViewById(R.id.txtBirthday);
+        txtPrice = findViewById(R.id.txtEmail);
         txtPurl = findViewById(R.id.txtPurl);
-        txtRank = findViewById(R.id.txtRank);
+        txtRank = findViewById(R.id.txtPhone);
         ivBack = findViewById(R.id.ivBack);
 
         ivBack.setOnClickListener(new View.OnClickListener() {

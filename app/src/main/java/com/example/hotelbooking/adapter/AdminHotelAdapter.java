@@ -1,7 +1,6 @@
 package com.example.hotelbooking.adapter;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,22 +8,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.hotelbooking.R;
+import com.example.hotelbooking.activities.AdminDetailHotelActivity;
 import com.example.hotelbooking.activities.UserDetailHotelActivity;
 import com.example.hotelbooking.model.Hotel;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
-public class HotelAdapter extends FirebaseRecyclerAdapter<Hotel, HotelAdapter.viewHolder> {
+public class AdminHotelAdapter extends FirebaseRecyclerAdapter<Hotel, AdminHotelAdapter.viewHolder> {
 
 
-    public HotelAdapter(@NonNull FirebaseRecyclerOptions<Hotel> options) {
+    public AdminHotelAdapter(@NonNull FirebaseRecyclerOptions<Hotel> options) {
         super(options);
     }
 
@@ -39,7 +39,7 @@ public class HotelAdapter extends FirebaseRecyclerAdapter<Hotel, HotelAdapter.vi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), UserDetailHotelActivity.class);
+                Intent intent = new Intent(v.getContext(), AdminDetailHotelActivity.class);
                 intent.putExtra("HotelKey", getRef(position).getKey());
                 v.getContext().startActivity(intent);
             }
@@ -60,6 +60,8 @@ public class HotelAdapter extends FirebaseRecyclerAdapter<Hotel, HotelAdapter.vi
 
         ImageView hotelImage;
         TextView tvName, tvPrice, tvAddress;
+        FirebaseAuth mAuth;
+        FirebaseFirestore fStore;
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,6 +69,9 @@ public class HotelAdapter extends FirebaseRecyclerAdapter<Hotel, HotelAdapter.vi
             tvName = itemView.findViewById(R.id.tvName);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             tvAddress = itemView.findViewById(R.id.tvAddress);
+
+            mAuth = FirebaseAuth.getInstance();
+            fStore = FirebaseFirestore.getInstance();
 
         }
 

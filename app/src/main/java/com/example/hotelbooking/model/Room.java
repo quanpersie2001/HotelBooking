@@ -2,18 +2,29 @@ package com.example.hotelbooking.model;
 
 public class Room {
 
-    private String id, name, type;
+    private String id, name, type, purl;
     private double price;
     private int status;
     private double square;
 
-    public Room(String id, String name, String type, double price, int status, double square) {
+    Room() {};
+
+    public Room(String id, String name, String type, String purl, double price, int status, double square) {
         this.id = id;
         this.name = name;
         this.type = type;
+        this.purl = purl;
         this.price = price;
         this.status = status;
         this.square = square;
+    }
+
+    public String getPurl() {
+        return purl;
+    }
+
+    public void setPurl(String purl) {
+        this.purl = purl;
     }
 
     public double getSquare() {

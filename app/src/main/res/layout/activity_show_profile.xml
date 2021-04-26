@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.ShowProfileActivity"
+    android:fitsSystemWindows="true">
+
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_back"
+        android:rotation="180"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="10dp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/ic_default_avatar"/>
+        <TextView
+            android:id="@+id/tvUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username"
+            android:textSize="30sp"
+            android:fontFamily="@font/semi_bold"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/medium"
+            android:text="Full Name:"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvFullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/regular"
+            android:text="full name"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/medium"
+            android:text="Birthday:"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvBirthday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/regular"
+            android:text="dd/mm/yyyy"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/medium"
+            android:text="Email:"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/regular"
+            android:text="email"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/medium"
+            android:text="Phone:"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/regular"
+            android:text="phone"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvEditProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="10dp"
+        android:text="Edit Your Profile"
+        android:textColor="@color/blue"
+        android:fontFamily="@font/medium"
+        android:textSize="20sp"
+        android:textAlignment="center"/>
+</LinearLayout>

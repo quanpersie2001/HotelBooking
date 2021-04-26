@@ -13,6 +13,7 @@ public class Utils {
     public static final String BIRTHDAY = "birthday";
     public static final String TAG = "TAG";
     public static final String DEFAULT = "default";
+    public static final String EMPTY = "";
     public static final String AVATAR = "avatar";
     public static final String USERS = "users";
     public static final String UPLOADS = "uploads";

@@ -1,48 +1,40 @@
 package com.example.hotelbooking.activities;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.hotelbooking.R;
-import com.example.hotelbooking.adapter.UserHotelAdapter;
-import com.example.hotelbooking.adapter.UserRoomAdapter;
-import com.example.hotelbooking.model.Hotel;
-import com.example.hotelbooking.model.Room;
+import com.example.hotelbooking.model.Admin;
 import com.example.hotelbooking.userfragment.UserLocationFragment;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class UserDetailHotelActivity extends AppCompatActivity {
+public class AdminDetailHotelActivity extends AppCompatActivity {
 
     ImageView imageHotel, ivBack;
     TextView tvName, tvName2, tvDescription, tvRank, tvAddress;
 
     DatabaseReference ref;
-    RecyclerView recyclerView;
-    UserRoomAdapter userRoomAdapter;
+
     String name, description, purl, address;
     String rank;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_detail_hotel);
+        setContentView(R.layout.activity_admin_detail_hotel);
 
         imageHotel = findViewById(R.id.imageHotel);
         tvName = findViewById(R.id.tvName);
@@ -53,7 +45,6 @@ public class UserDetailHotelActivity extends AppCompatActivity {
         ivBack = findViewById(R.id.ivBack);
 
         ref = FirebaseDatabase.getInstance().getReference().child("hotel");
-
         String HotelKey = getIntent().getStringExtra("HotelKey");
         ref.child(HotelKey).addValueEventListener(new ValueEventListener() {
             @Override
@@ -82,21 +73,24 @@ public class UserDetailHotelActivity extends AppCompatActivity {
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), UserMainActivity.class));
+                startActivity(new Intent(getApplicationContext(), AdminMainActivity.class));
                 finish();
             }
         });
-        recyclerView = findViewById(R.id.recyclerView);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
 
-        FirebaseRecyclerOptions<Room> options =
-                new FirebaseRecyclerOptions.Builder<Room>()
-                        .setQuery(ref, Room.class)
-                        .build();
+        tvAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new UserLocationFragment();
+                Bundle bundle = new Bundle();
+                fragment.setArguments(bundle);
+                ((FragmentActivity) v.getContext()).getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.detail_layout, fragment)
+                        .commit();
+            }
+        });
 
-        userRoomAdapter = new UserRoomAdapter(options);
 
-        recyclerView.setAdapter(userRoomAdapter);
     }
 }

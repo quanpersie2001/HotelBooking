@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.hotelbooking.R;
+import com.example.hotelbooking.activities.ShowProfileActivity;
 import com.example.hotelbooking.activities.SignInActivity;
 import com.example.hotelbooking.model.User;
 import com.example.hotelbooking.utils.Utils;
@@ -52,7 +53,7 @@ import java.util.Objects;
 
 public class UserSettingFragment extends Fragment {
 
-    Button btnLogout, btnEditProfile, btnBooked, btnAbout, btnCoupon;
+    Button btnLogout, btnProfile, btnBooked, btnAbout, btnCoupon;
     ImageView bigAvatar;
     TextView tvUsername;
     FirebaseAuth fAuth;
@@ -80,7 +81,7 @@ public class UserSettingFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_user_setting, container, false);
         btnCoupon = (Button) view.findViewById(R.id.btnCoupon);
         btnLogout = (Button) view.findViewById(R.id.btnLogout);
-        btnEditProfile = (Button) view.findViewById(R.id.btnEditProfile);
+        btnProfile = (Button) view.findViewById(R.id.btnProfile);
         btnAbout = (Button) view.findViewById(R.id.btnAbout);
         btnBooked = (Button) view.findViewById(R.id.btnBooked);
         bigAvatar = (ImageView) view.findViewById(R.id.bigAvatar);
@@ -128,6 +129,12 @@ public class UserSettingFragment extends Fragment {
                 } else {
                     Toast.makeText(getActivity(), getString(R.string.network_unavailable), Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ShowProfileActivity.class));
             }
         });
     }

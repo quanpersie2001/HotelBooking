@@ -14,7 +14,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.example.hotelbooking.R;
-import com.example.hotelbooking.adapter.HotelAdapter;
+import com.example.hotelbooking.adapter.AdminHotelAdapter;
+import com.example.hotelbooking.adapter.UserHotelAdapter;
 import com.example.hotelbooking.model.Hotel;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
@@ -24,7 +25,7 @@ public class AdminHomeFragment extends Fragment {
 
     RecyclerView recyclerView;
     DatabaseReference mReference;
-    HotelAdapter hotelAdapter;
+    AdminHotelAdapter adminHotelAdapter;
     EditText txtSearch;
 
     @Override
@@ -60,20 +61,20 @@ public class AdminHomeFragment extends Fragment {
                         .setQuery(mReference, Hotel.class)
                         .build();
 
-        hotelAdapter = new HotelAdapter(options);
+        adminHotelAdapter = new AdminHotelAdapter(options);
 
-        recyclerView.setAdapter(hotelAdapter);
+        recyclerView.setAdapter(adminHotelAdapter);
 
         return view;
     }
     @Override
     public void onStart() {
         super.onStart();
-        hotelAdapter.startListening();
+        adminHotelAdapter.startListening();
     }
     @Override
     public void onStop() {
         super.onStop();
-        hotelAdapter.stopListening();
+        adminHotelAdapter.stopListening();
     }
 }

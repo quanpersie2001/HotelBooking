@@ -1,91 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".adminfragment.AdminSettingFragment">
+    tools:context=".adminfragment.AdminSettingFragment"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/button"
-        android:fontFamily="@font/bold"
-        android:text="LOG OUT"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAbout" />
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/bigAvatar"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/ic_default_avatar"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/bigAvatar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/ic_default_avatar" />
 
-    <TextView
-        android:id="@+id/tvEditProfile"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tvUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="50sp"
+            android:layout_weight="1"
+            android:fontFamily="@font/semi_bold"
+            android:text="Username"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/semi_bold"
-        android:text="Edit Your Profile"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/bigAvatar"
-        app:layout_constraintStart_toStartOf="@+id/bigAvatar"
-        app:layout_constraintTop_toBottomOf="@+id/bigAvatar" />
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvChagePass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/semi_bold"
-        android:text="Change Your Password"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/tvEditProfile"
-        app:layout_constraintStart_toStartOf="@+id/tvEditProfile"
-        app:layout_constraintTop_toBottomOf="@+id/tvEditProfile" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tvListBooking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/semi_bold"
-        android:text="List Booking"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/tvChagePass"
-        app:layout_constraintStart_toStartOf="@+id/tvChagePass"
-        app:layout_constraintTop_toBottomOf="@+id/tvChagePass" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/button_square"
+                android:fontFamily="@font/bold"
+                android:text="PROFILE"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
 
-    <TextView
-        android:id="@+id/tvAbout"
-        android:layout_width="wrap_content"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnBooked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_square"
+                android:fontFamily="@font/bold"
+                android:text="BOOKED"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnCoupon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/button_square"
+                android:fontFamily="@font/bold"
+                android:text="COUPON"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAbout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_square"
+                android:fontFamily="@font/bold"
+                android:text="ABOUT"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/semi_bold"
-        android:text="About"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/tvListBooking"
-        app:layout_constraintStart_toStartOf="@+id/tvListBooking"
-        app:layout_constraintTop_toBottomOf="@+id/tvListBooking" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:fontFamily="@font/bold"
+            android:text="LOG OUT"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+</LinearLayout>
