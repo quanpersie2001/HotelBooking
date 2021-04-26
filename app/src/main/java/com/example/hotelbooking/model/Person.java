@@ -1,7 +1,8 @@
 package com.example.hotelbooking.model;
 
-public class Person {
 
+
+public class Person {
     private String username;
     private String birthday;
     private String gender;
