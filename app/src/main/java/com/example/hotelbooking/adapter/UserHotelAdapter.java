@@ -40,6 +40,7 @@ public class UserHotelAdapter extends FirebaseRecyclerAdapter<Hotel, UserHotelAd
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), UserDetailHotelActivity.class);
                 intent.putExtra("HotelKey", getRef(position).getKey());
+                intent.putExtra("HotelId", model.getId());
                 v.getContext().startActivity(intent);
             }
         });
@@ -55,7 +56,7 @@ public class UserHotelAdapter extends FirebaseRecyclerAdapter<Hotel, UserHotelAd
         return new viewHolder(view);
     }
 
-    public class viewHolder extends RecyclerView.ViewHolder {
+    public static class viewHolder extends RecyclerView.ViewHolder {
 
         ImageView hotelImage;
         TextView tvName, tvPrice, tvAddress;
@@ -67,7 +68,7 @@ public class UserHotelAdapter extends FirebaseRecyclerAdapter<Hotel, UserHotelAd
             hotelImage = itemView.findViewById(R.id.hotelImage);
             tvName = itemView.findViewById(R.id.tvName);
             tvPrice = itemView.findViewById(R.id.tvPrice);
-            tvAddress = itemView.findViewById(R.id.tvAddress);
+            tvAddress = itemView.findViewById(R.id.tvStatus);
 
             mAuth = FirebaseAuth.getInstance();
             fStore = FirebaseFirestore.getInstance();

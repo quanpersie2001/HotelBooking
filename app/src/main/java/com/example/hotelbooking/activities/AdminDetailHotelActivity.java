@@ -13,7 +13,6 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.hotelbooking.R;
-import com.example.hotelbooking.model.Admin;
 import com.example.hotelbooking.userfragment.UserLocationFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,7 +40,7 @@ public class AdminDetailHotelActivity extends AppCompatActivity {
         tvName2 = findViewById(R.id.tvName2);
         tvDescription = findViewById(R.id.tvDescription);
         tvRank = findViewById(R.id.tvRank);
-        tvAddress = findViewById(R.id.tvAddress);
+        tvAddress = findViewById(R.id.tvStatus);
         ivBack = findViewById(R.id.ivBack);
 
         ref = FirebaseDatabase.getInstance().getReference().child("hotel");

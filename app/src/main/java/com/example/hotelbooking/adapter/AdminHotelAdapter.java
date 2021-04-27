@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.hotelbooking.R;
 import com.example.hotelbooking.activities.AdminDetailHotelActivity;
-import com.example.hotelbooking.activities.UserDetailHotelActivity;
 import com.example.hotelbooking.model.Hotel;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -68,7 +67,7 @@ public class AdminHotelAdapter extends FirebaseRecyclerAdapter<Hotel, AdminHotel
             hotelImage = itemView.findViewById(R.id.hotelImage);
             tvName = itemView.findViewById(R.id.tvName);
             tvPrice = itemView.findViewById(R.id.tvPrice);
-            tvAddress = itemView.findViewById(R.id.tvAddress);
+            tvAddress = itemView.findViewById(R.id.tvStatus);
 
             mAuth = FirebaseAuth.getInstance();
             fStore = FirebaseFirestore.getInstance();

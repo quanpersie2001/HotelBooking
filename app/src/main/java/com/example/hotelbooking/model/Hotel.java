@@ -3,23 +3,28 @@ package com.example.hotelbooking.model;
 import java.util.ArrayList;
 
 public class Hotel {
-    String  purl, name, price, address, description;
-    ArrayList<Room> rooms;
+    String  purl, name, price, address, description, id;
 
     Hotel()
     {
 
     }
 
-    public Hotel(String purl, String name, String price, String address, String description, ArrayList<Room> rooms) {
+    public Hotel(String purl, String name, String price, String address, String description, String id) {
         this.description = description;
         this.purl = purl;
         this.name = name;
         this.price = price;
         this.address = address;
-        this.rooms = rooms;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getDescription() {
         return description;

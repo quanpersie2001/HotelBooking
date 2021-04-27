@@ -2,14 +2,13 @@ package com.example.hotelbooking.model;
 
 public class Room {
 
-    private String id, name, type, purl;
-    private double price;
-    private int status;
-    private double square;
+    private String id, name, type, purl, price;
+    private String status;
+    private String square;
 
     Room() {};
 
-    public Room(String id, String name, String type, String purl, double price, int status, double square) {
+    public Room(String id, String name, String type, String purl, String price, String status, String square) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -27,11 +26,11 @@ public class Room {
         this.purl = purl;
     }
 
-    public double getSquare() {
+    public String getSquare() {
         return square;
     }
 
-    public void setSquare(double square) {
+    public void setSquare(String square) {
         this.square = square;
     }
 
@@ -59,19 +58,19 @@ public class Room {
         this.type = type;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 }

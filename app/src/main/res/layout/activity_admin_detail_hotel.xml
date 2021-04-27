@@ -137,7 +137,7 @@
                                 android:background="@drawable/ic_location" />
 
                             <TextView
-                                android:id="@+id/tvAddress"
+                                android:id="@+id/tvStatus"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"

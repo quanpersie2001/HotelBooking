@@ -2,25 +2,19 @@ package com.example.hotelbooking.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.hotelbooking.R;
-import com.example.hotelbooking.adapter.UserHotelAdapter;
 import com.example.hotelbooking.adapter.UserRoomAdapter;
-import com.example.hotelbooking.model.Hotel;
 import com.example.hotelbooking.model.Room;
-import com.example.hotelbooking.userfragment.UserLocationFragment;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,11 +27,14 @@ public class UserDetailHotelActivity extends AppCompatActivity {
     ImageView imageHotel, ivBack;
     TextView tvName, tvName2, tvDescription, tvRank, tvAddress;
 
-    DatabaseReference ref;
+    DatabaseReference hotelRef, roomRef;
     RecyclerView recyclerView;
-    UserRoomAdapter userRoomAdapter;
+
+
     String name, description, purl, address;
     String rank;
+    private UserRoomAdapter userRoomAdapter;
+    private String hotelId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +46,18 @@ public class UserDetailHotelActivity extends AppCompatActivity {
         tvName2 = findViewById(R.id.tvName2);
         tvDescription = findViewById(R.id.tvDescription);
         tvRank = findViewById(R.id.tvRank);
-        tvAddress = findViewById(R.id.tvAddress);
+        tvAddress = findViewById(R.id.tvStatus);
         ivBack = findViewById(R.id.ivBack);
 
-        ref = FirebaseDatabase.getInstance().getReference().child("hotel");
+
+        roomRef = FirebaseDatabase.getInstance().getReference().child("rooms");
+        hotelRef = FirebaseDatabase.getInstance().getReference().child("hotel");
+
+
 
         String HotelKey = getIntent().getStringExtra("HotelKey");
-        ref.child(HotelKey).addValueEventListener(new ValueEventListener() {
+        hotelId = getIntent().getStringExtra("HotelId");
+        hotelRef.child(HotelKey).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
@@ -63,7 +65,7 @@ public class UserDetailHotelActivity extends AppCompatActivity {
                     purl = snapshot.child("purl").getValue().toString();
                     description = snapshot.child("description").getValue().toString();
                     address = snapshot.child("address").getValue().toString();
-                    rank = snapshot.child("rank").getValue().toString();
+                    rank = String.valueOf((double)snapshot.child("rank").getValue());
                     tvDescription.setText(description);
                     tvRank.setText(rank);
                     tvAddress.setText(address);
@@ -86,17 +88,28 @@ public class UserDetailHotelActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+
+
         recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
-
         FirebaseRecyclerOptions<Room> options =
                 new FirebaseRecyclerOptions.Builder<Room>()
-                        .setQuery(ref, Room.class)
+                        .setQuery(roomRef.orderByChild("hotelID").equalTo(hotelId), Room.class)
                         .build();
 
         userRoomAdapter = new UserRoomAdapter(options);
-
         recyclerView.setAdapter(userRoomAdapter);
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        userRoomAdapter.startListening();
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        userRoomAdapter.stopListening();}
+
 }
