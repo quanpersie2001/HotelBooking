@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.hotelbooking.R;
-import com.example.hotelbooking.activities.AddHotelActivity;
+import com.example.hotelbooking.activities.admin_activites.AddHotelActivity;
 
 public class AdminAddFragment extends Fragment {
     Button btnAdd;

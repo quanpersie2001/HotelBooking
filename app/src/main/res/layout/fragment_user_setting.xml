@@ -30,7 +30,7 @@
             android:layout_marginRight="50sp"
             android:layout_weight="1"
             android:fontFamily="@font/semi_bold"
-            android:text="Username"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="24sp" />
     </LinearLayout>

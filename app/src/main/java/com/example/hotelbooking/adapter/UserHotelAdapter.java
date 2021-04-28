@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.hotelbooking.R;
-import com.example.hotelbooking.activities.UserDetailHotelActivity;
+import com.example.hotelbooking.activities.user_activities.UserDetailHotelActivity;
 import com.example.hotelbooking.model.Hotel;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;

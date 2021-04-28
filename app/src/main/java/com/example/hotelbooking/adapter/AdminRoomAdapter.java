@@ -16,11 +16,13 @@ import com.example.hotelbooking.activities.user_activities.UserBookNowActivity;
 import com.example.hotelbooking.model.Room;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-public class UserRoomAdapter extends FirebaseRecyclerAdapter<Room, UserRoomAdapter.viewHolder> {
+public class AdminRoomAdapter extends FirebaseRecyclerAdapter<Room, AdminRoomAdapter.viewHolder> {
 
 
-    public UserRoomAdapter(@NonNull FirebaseRecyclerOptions<Room> options) {
+    public AdminRoomAdapter(@NonNull FirebaseRecyclerOptions<Room> options) {
         super(options);
     }
 
@@ -38,6 +40,8 @@ public class UserRoomAdapter extends FirebaseRecyclerAdapter<Room, UserRoomAdapt
                 v.getContext().startActivity(intent);
             }
         });
+
+
     }
 
     @NonNull
@@ -48,6 +52,10 @@ public class UserRoomAdapter extends FirebaseRecyclerAdapter<Room, UserRoomAdapt
 
         return new viewHolder(view);
     }
+
+//    public void deleteItem(int position) {
+//        DatabaseReference df = FirebaseDatabase.getInstance().getReference().child(getRef(position).getKey()).removeValue();
+//    }
 
     public static class viewHolder extends RecyclerView.ViewHolder{
 

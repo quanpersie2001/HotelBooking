@@ -1,4 +1,4 @@
-package com.example.hotelbooking.activities;
+package com.example.hotelbooking.activities.admin_activites;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -8,25 +8,25 @@ import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.hotelbooking.R;
-import com.example.hotelbooking.userfragment.UserHeartFragment;
-import com.example.hotelbooking.userfragment.UserHomeFragment;
-import com.example.hotelbooking.userfragment.UserLocationFragment;
-import com.example.hotelbooking.userfragment.UserSettingFragment;
+import com.example.hotelbooking.adminfragment.AdminAddFragment;
+import com.example.hotelbooking.adminfragment.AdminHomeFragment;
+import com.example.hotelbooking.adminfragment.AdminNotificationFragment;
+import com.example.hotelbooking.adminfragment.AdminSettingFragment;
 
-public class UserMainActivity extends AppCompatActivity {
+public class AdminMainActivity extends AppCompatActivity {
 
     MeowBottomNavigation bottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_main);
+        setContentView(R.layout.activity_admin_main);
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
 
         bottomNavigation.add(new MeowBottomNavigation.Model(1, R.drawable.ic_home));
-        bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.ic_location));
-        bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.ic_heart));
+        bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.ic_add));
+        bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.ic_notification));
         bottomNavigation.add(new MeowBottomNavigation.Model(4, R.drawable.ic_user));
 
         bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
@@ -36,16 +36,16 @@ public class UserMainActivity extends AppCompatActivity {
 
                 switch (item.getId()){
                     case 1:
-                        fragment = new UserHomeFragment();
+                        fragment = new AdminHomeFragment();
                         break;
                     case 2:
-                        fragment = new UserLocationFragment();
+                        fragment = new AdminAddFragment();
                         break;
                     case 3:
-                        fragment = new UserHeartFragment();
+                        fragment = new AdminNotificationFragment();
                         break;
                     case 4:
-                        fragment = new UserSettingFragment();
+                        fragment = new AdminSettingFragment();
                         break;
                 }
                 loadFragment(fragment);

@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.UserBookNowActivity"
+    tools:context=".activities.user_activities.UserBookNowActivity"
     android:orientation="vertical"
     android:layout_gravity="center"
     android:fitsSystemWindows="true">
@@ -266,7 +266,8 @@
                 android:fontFamily="@font/semi_bold"
                 android:hint="Check In"
                 android:paddingLeft="15dp"
-                android:paddingRight="15dp" />
+                android:paddingRight="15dp"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/txtCheckOut"
@@ -280,7 +281,7 @@
                 android:hint="Check Out"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
-                android:textColor="@color/gray" />
+                android:textColor="@color/black" />
 
         </LinearLayout>
 

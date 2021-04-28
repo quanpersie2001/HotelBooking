@@ -1,4 +1,4 @@
-package com.example.hotelbooking.activities;
+package com.example.hotelbooking.activities.user_activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 

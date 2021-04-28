@@ -9,6 +9,8 @@ import android.os.Build;
 
 public class Utils {
     public static final String IS_ADMIN = "isAdmin";
+    public static final String HOTEL = "hotel";
+    public static final String FULL_Name = "full name";
     public static final String PHONE_NUMBER = "phone";
     public static final String BIRTHDAY = "birthday";
     public static final String TAG = "TAG";

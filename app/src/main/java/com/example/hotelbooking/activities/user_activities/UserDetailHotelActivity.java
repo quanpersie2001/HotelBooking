@@ -1,4 +1,4 @@
-package com.example.hotelbooking.activities;
+package com.example.hotelbooking.activities.user_activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,6 +50,7 @@ public class UserDetailHotelActivity extends AppCompatActivity {
         ivBack = findViewById(R.id.ivBack);
 
 
+
         roomRef = FirebaseDatabase.getInstance().getReference().child("rooms");
         hotelRef = FirebaseDatabase.getInstance().getReference().child("hotel");
 
@@ -57,39 +58,31 @@ public class UserDetailHotelActivity extends AppCompatActivity {
 
         String HotelKey = getIntent().getStringExtra("HotelKey");
         hotelId = getIntent().getStringExtra("HotelId");
-        hotelRef.child(HotelKey).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    name = snapshot.child("name").getValue().toString();
-                    purl = snapshot.child("purl").getValue().toString();
-                    description = snapshot.child("description").getValue().toString();
-                    address = snapshot.child("address").getValue().toString();
-                    rank = String.valueOf((double)snapshot.child("rank").getValue());
-                    tvDescription.setText(description);
-                    tvRank.setText(rank);
-                    tvAddress.setText(address);
-                    tvName.setText(name);
-                    tvName2.setText(name);
-                    Glide.with(imageHotel.getContext()).load(purl).into(imageHotel);
+        if (HotelKey != null && !HotelKey.isEmpty()){
+            hotelRef.child(HotelKey).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(snapshot.exists()){
+                        name = snapshot.child("name").getValue().toString();
+                        purl = snapshot.child("purl").getValue().toString();
+                        description = snapshot.child("description").getValue().toString();
+                        address = snapshot.child("address").getValue().toString();
+                        rank = String.valueOf(snapshot.child("rank").getValue());
+                        tvDescription.setText(description);
+                        tvRank.setText(rank);
+                        tvAddress.setText(address);
+                        tvName.setText(name);
+                        tvName2.setText(name);
+                        Glide.with(UserDetailHotelActivity.this).load(purl).into(imageHotel);
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
-
-        ivBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), UserMainActivity.class));
-                finish();
-            }
-        });
-
-
+                }
+            });
+        }
 
         recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -102,6 +95,20 @@ public class UserDetailHotelActivity extends AppCompatActivity {
         userRoomAdapter = new UserRoomAdapter(options);
         recyclerView.setAdapter(userRoomAdapter);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+    }
+
     @Override
     public void onStart() {
         super.onStart();

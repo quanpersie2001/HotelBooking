@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.admin_activites.AddHotelActivity"
+    tools:context=".activities.admin_activites.AddRoomActivity"
     android:fitsSystemWindows="true"
     android:id="@+id/add_layout">
 
@@ -43,7 +43,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:fontFamily="@font/bold"
-                    android:text="ADD NEW HOTEL"
+                    android:text="ADD NEW ROOM"
                     android:textColor="@color/pink"
                     android:textSize="24sp" />
 
@@ -69,12 +69,12 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="5dp"
                         android:fontFamily="@font/medium"
-                        android:text="Hotel Name"
+                        android:text="Room Name"
                         android:textColor="@color/pink"
                         android:textSize="18sp" />
 
                     <EditText
-                        android:id="@+id/txtHotelName"
+                        android:id="@+id/txtRoomName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -83,7 +83,7 @@
                         android:backgroundTint="@color/pink"
                         android:ems="10"
                         android:fontFamily="@font/medium"
-                        android:hint="Hotel Name"
+                        android:hint="Room Name"
                         android:inputType="textPersonName"
                         android:textColorHint="@color/gray" />
                 </LinearLayout>
@@ -110,23 +110,9 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="5dp"
                         android:fontFamily="@font/medium"
-                        android:text="Hotel Detail"
+                        android:text="Room Detail"
                         android:textColor="@color/pink"
                         android:textSize="18sp" />
-
-                    <EditText
-                        android:id="@+id/txtAddress"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:ems="10"
-                        android:fontFamily="@font/medium"
-                        android:hint="Hotel Address"
-                        android:inputType="textMultiLine"
-                        android:textColorHint="@color/gray"
-                        android:backgroundTint="@color/pink"/>
 
                     <EditText
                         android:id="@+id/txtDescription"
@@ -151,24 +137,75 @@
                         android:layout_marginBottom="10dp"
                         android:ems="10"
                         android:fontFamily="@font/medium"
-                        android:hint="Price"
+                        android:hint="Price / Day"
                         android:inputType="numberDecimal"
                         android:textColorHint="@color/gray"
                         android:backgroundTint="@color/pink"/>
 
-                    <EditText
-                        android:id="@+id/txtRank"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="10dp"
-                        android:ems="10"
-                        android:fontFamily="@font/medium"
-                        android:hint="Rank"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Type"
+                            android:textColor="@color/pink"
+                            android:fontFamily="@font/semi_bold"
+                            android:textSize="18sp"
+                            android:layout_marginRight="20dp"/>
+                        <RadioGroup
+                            android:id="@+id/rgRoomType"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <RadioButton
+                                android:id="@+id/rdSingle"
+                                android:layout_width="90dp"
+                                android:layout_height="wrap_content"
+                                android:text="Single"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/medium"
+                                android:textColor="@color/pink"
+                                android:buttonTint="@color/pink"/>
+                            <RadioButton
+                                android:id="@+id/rdDouble"
+                                android:layout_width="90dp"
+                                android:layout_height="wrap_content"
+                                android:text="Double"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/medium"
+                                android:textColor="@color/pink"
+                                android:buttonTint="@color/pink"/>
+                            <RadioButton
+                                android:id="@+id/rdTriple"
+                                android:layout_width="90dp"
+                                android:layout_height="wrap_content"
+                                android:text="Triple"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/medium"
+                                android:textColor="@color/pink"
+                                android:buttonTint="@color/pink"/>
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtSquare"
+                        android:hint="Square"
                         android:inputType="numberDecimal"
-                        android:textColorHint="@color/gray"
-                        android:backgroundTint="@color/pink"/>
+                        android:backgroundTint="@color/pink"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"/>
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

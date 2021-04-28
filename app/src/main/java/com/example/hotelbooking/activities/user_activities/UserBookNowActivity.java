@@ -1,4 +1,4 @@
-package com.example.hotelbooking.activities;
+package com.example.hotelbooking.activities.user_activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,14 +6,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.hotelbooking.R;
+import com.example.hotelbooking.activities.admin_activites.AddRoomActivity;
+import com.example.hotelbooking.model.Room;
+import com.example.hotelbooking.model.RoomBook;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,8 +31,9 @@ import java.util.Calendar;
 public class UserBookNowActivity extends AppCompatActivity {
     ImageView imageRoom, ivBack;
     TextView tvName, tvName2, tvPrice, tvSquare, tvType, tvStatus, txtCheckIn, txtCheckOut;
-    Button btnBook;
+    Button btnBook, btnApply;
     DatabaseReference roomRef;
+    FirebaseAuth mAuth;
     private int mDayCheckIn;
     private int mMonthCheckIn;
     private int mYearCheckIn;
@@ -51,10 +58,31 @@ public class UserBookNowActivity extends AppCompatActivity {
         txtCheckIn = findViewById(R.id.txtCheckIn);
         txtCheckOut = findViewById(R.id.txtCheckOut);
         btnBook = findViewById(R.id.btnBook);
+        btnBook = findViewById(R.id.btnBook);
+        mAuth = FirebaseAuth.getInstance();
 
         roomRef = FirebaseDatabase.getInstance().getReference().child("rooms");
-
         String RoomKey = getIntent().getStringExtra("RoomKey");
+        String hotelID = getIntent().getStringExtra("hotelID");
+        String name = getIntent().getStringExtra("name");
+        String type = getIntent().getStringExtra("type");
+        String url = getIntent().getStringExtra("purl");
+        String price = getIntent().getStringExtra("price");
+        String square = getIntent().getStringExtra("square");
+        String userID = mAuth.getCurrentUser().getUid();
+
+        btnBook.setOnClickListener(v -> {
+            String dateIn = txtCheckIn.getText().toString();
+            String dateOut = txtCheckOut.getText().toString();
+            RoomBook roomBook= new RoomBook(hotelID, name, type, url, price, "0", square, dateIn, dateOut, userID);
+            FirebaseDatabase.getInstance().getReference().child("roomBooked").push().setValue(roomBook)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(UserBookNowActivity.this, R.string.inserted_data, Toast.LENGTH_SHORT).show();
+                            onBackPressed();
+                        }
+                    });
+        });
 
         roomRef.child(RoomKey).addValueEventListener(new ValueEventListener() {
             @Override
@@ -75,12 +103,13 @@ public class UserBookNowActivity extends AppCompatActivity {
                     Glide.with(imageRoom.getContext()).load(purl).into(imageRoom);
 
                     if(status.equals("0")){
+                        tvStatus.setTextColor(Color.parseColor("#66cc33"));
                         tvStatus.setText("Empty");
-                        tvStatus.setTextColor(Integer.parseInt("#66cc33"));
                     }
                     if(status.equals("1")){
+                        tvStatus.setTextColor(Color.parseColor("#FF0000"));
                         tvStatus.setText("Booked");
-                        tvStatus.setTextColor(Integer.parseInt("#FF0000"));
+
                     }
 
                 }
@@ -93,8 +122,7 @@ public class UserBookNowActivity extends AppCompatActivity {
         });
 
         ivBack.setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(), UserDetailHotelActivity.class));
-            finish();
+            onBackPressed();
         });
 
         txtCheckIn.setOnClickListener(v->{
@@ -137,14 +165,15 @@ public class UserBookNowActivity extends AppCompatActivity {
                         mDayCheckIn = dayOfMonth;
                         mMonthCheckIn = monthOfYear +1;
                         mYearCheckIn = year;
-                        txtCheckIn.setText("Check in : "+dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                        txtCheckIn.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
                     }else {
                         mDayCheckOut = dayOfMonth;
                         mMonthCheckOut = monthOfYear +1;
                         mYearCheckOut = year;
-                        txtCheckOut.setText("Check out : "+dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                        txtCheckOut.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
                     }
                 }, currentYear, currentMonth, currentDay);
         datePickerDialog.show();
+
     }
 }

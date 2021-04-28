@@ -9,14 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HotelBooking">
-        <activity android:name=".activities.UserBookNowActivity"></activity>
-        <activity android:name=".activities.UserBookedActivity" />
+        <activity android:name=".activities.admin_activites.AddRoomActivity"></activity>
+        <activity android:name=".activities.FilterActivity" />
+        <activity android:name=".activities.ReSearchActivity" />
+        <activity android:name=".activities.user_activities.UserBookNowActivity" />
+        <activity android:name=".activities.user_activities.UserBookedActivity" />
         <activity android:name=".activities.ShowProfileActivity" />
-        <activity android:name=".activities.AddHotelActivity" />
-        <activity android:name=".activities.UserDetailHotelActivity" />
-        <activity android:name=".activities.AdminMainActivity" />
-        <activity android:name=".activities.AdminDetailHotelActivity" />
-        <activity android:name=".activities.EditProfileActivity" />
+        <activity android:name=".activities.admin_activites.AddHotelActivity" />
+        <activity android:name=".activities.user_activities.UserDetailHotelActivity" />
+        <activity android:name=".activities.admin_activites.AdminMainActivity" />
+        <activity android:name=".activities.admin_activites.AdminDetailHotelActivity" />
         <activity android:name=".activities.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +30,7 @@
         <activity android:name=".activities.ResetPasswordActivity" />
         <activity android:name=".activities.SignUpActivity" />
         <activity android:name=".activities.SignInActivity" />
-        <activity android:name=".activities.UserMainActivity" />
+        <activity android:name=".activities.user_activities.UserMainActivity" />
     </application>
 
 </manifest>

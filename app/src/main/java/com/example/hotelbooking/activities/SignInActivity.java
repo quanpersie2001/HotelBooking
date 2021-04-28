@@ -16,13 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hotelbooking.R;
-import com.example.hotelbooking.model.Admin;
-import com.example.hotelbooking.model.User;
+import com.example.hotelbooking.activities.admin_activites.AdminMainActivity;
+import com.example.hotelbooking.activities.user_activities.UserMainActivity;
 import com.example.hotelbooking.utils.Utils;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
