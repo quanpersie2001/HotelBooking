@@ -33,8 +33,15 @@ public class UserRoomAdapter extends FirebaseRecyclerAdapter<Room, UserRoomAdapt
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), UserBookNowActivity.class);
+                Intent intent = new Intent(v.getContext().getApplicationContext(), UserBookNowActivity.class);
                 intent.putExtra("RoomKey", getRef(position).getKey());
+                intent.putExtra("hotelID",model.getHotelID());
+                intent.putExtra("name",model.getName());
+                intent.putExtra("type",model.getType());
+                intent.putExtra("purl",model.getPurl());
+                intent.putExtra("price",model.getPrice());
+                intent.putExtra("status",model.getStatus());
+                intent.putExtra("square",model.getSquare());
                 v.getContext().startActivity(intent);
             }
         });

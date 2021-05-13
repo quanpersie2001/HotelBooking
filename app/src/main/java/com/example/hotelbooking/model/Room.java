@@ -1,12 +1,16 @@
 package com.example.hotelbooking.model;
 
-public class Room {
+import java.io.Serializable;
+
+public class Room implements Serializable {
 
     private String hotelID, name, type, purl, price;
     private String status;
     private String square;
 
-    Room() {};
+    public Room() {
+
+    }
 
     public Room(String hotelID, String name, String type, String purl, String price, String status, String square) {
         this.hotelID = hotelID;

@@ -41,6 +41,7 @@ public class UserBookNowActivity extends AppCompatActivity {
     private int mDayCheckOut;
     private int mMonthCheckOut;
     private int mYearCheckOut;
+    private Room room;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,21 +62,23 @@ public class UserBookNowActivity extends AppCompatActivity {
         btnBook = findViewById(R.id.btnBook);
         mAuth = FirebaseAuth.getInstance();
 
-        roomRef = FirebaseDatabase.getInstance().getReference().child("rooms");
-        String RoomKey = getIntent().getStringExtra("RoomKey");
         String hotelID = getIntent().getStringExtra("hotelID");
         String name = getIntent().getStringExtra("name");
         String type = getIntent().getStringExtra("type");
-        String url = getIntent().getStringExtra("purl");
+        String purl = getIntent().getStringExtra("purl");
         String price = getIntent().getStringExtra("price");
+        String status = getIntent().getStringExtra("status");
         String square = getIntent().getStringExtra("square");
+
+        roomRef = FirebaseDatabase.getInstance().getReference().child("rooms");
+        String RoomKey = getIntent().getStringExtra("RoomKey");
         String userID = mAuth.getCurrentUser().getUid();
 
         btnBook.setOnClickListener(v -> {
             String dateIn = txtCheckIn.getText().toString();
             String dateOut = txtCheckOut.getText().toString();
-            RoomBook roomBook= new RoomBook(hotelID, name, type, url, price, "0", square, dateIn, dateOut, userID);
-            FirebaseDatabase.getInstance().getReference().child("roomBooked").push().setValue(roomBook)
+            RoomBook roomBook= new RoomBook( hotelID, name, type, purl, price, "1", square, dateIn, dateOut);
+            FirebaseDatabase.getInstance().getReference().child("roomBooked").child(userID).push().setValue(roomBook)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             Toast.makeText(UserBookNowActivity.this, R.string.inserted_data, Toast.LENGTH_SHORT).show();

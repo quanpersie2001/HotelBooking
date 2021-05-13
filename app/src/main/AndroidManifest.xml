@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HotelBooking">
-        <activity android:name=".activities.admin_activites.AddRoomActivity"></activity>
+        <activity android:name=".activities.admin_activites.AdminEditHotelActivity"></activity>
+        <activity android:name=".activities.admin_activites.EditHotelActivity" />
+        <activity android:name=".activities.EditProfileActivity" />
+        <activity android:name=".activities.admin_activites.AddRoomActivity" />
         <activity android:name=".activities.FilterActivity" />
         <activity android:name=".activities.ReSearchActivity" />
         <activity android:name=".activities.user_activities.UserBookNowActivity" />

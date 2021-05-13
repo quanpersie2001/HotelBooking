@@ -2,8 +2,10 @@ package com.example.hotelbooking.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.icu.util.ULocale;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,7 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ShowProfileActivity extends AppCompatActivity {
 
-    TextView tvUsername, tvFullName, tvBirthday, tvEmail, tvPhone;
+    TextView tvUsername, tvFullName, tvBirthday, tvEmail, tvPhone, tvEditProfile;
     ImageView ivBack;
     FirebaseFirestore fStore;
     FirebaseUser mCurrentUser;
@@ -37,13 +39,18 @@ public class ShowProfileActivity extends AppCompatActivity {
         tvEmail = findViewById(R.id.tvEmail);
         tvPhone = findViewById(R.id.tvPhone);
         tvBirthday = findViewById(R.id.tvBirthday);
+        tvEditProfile = findViewById(R.id.tvEditProfile);
+        ivBack = findViewById(R.id.ivBack);
 
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         mCurrentUser = mAuth.getCurrentUser();
 
 
+
     }
+
+
 
     @Override
     protected void onResume() {
@@ -66,6 +73,15 @@ public class ShowProfileActivity extends AppCompatActivity {
                 tvBirthday.setText(birthday);
                 tvPhone.setText(phone);
                 tvUsername.setText(username);
+            }
+        });
+        ivBack.setOnClickListener(v -> onBackPressed());
+
+        tvEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),EditProfileActivity.class));
+                finish();
             }
         });
     }

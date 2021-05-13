@@ -80,12 +80,7 @@ public class AddHotelActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(AddHotelActivity.this, R.string.inserted_data, Toast.LENGTH_SHORT).show();
-                    txtHotelName.setText("");
-                    txtHotelAddress.setText("");
-                    txtPrice.setText("");
-                    txtPurl.setText("");
-                    txtRank.setText("");
-                    txtDescription.setText("");
+                    onBackPressed();
                 } else {
 
                 }

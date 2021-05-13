@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,10 +23,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class AdminDetailHotelActivity extends AppCompatActivity {
+public class AdminEditHotelActivity extends AppCompatActivity {
 
-    ImageView imageHotel, ivBack;
-    TextView tvName, tvName2, tvDescription, tvRank, tvAddress, tvEdit;
+    ImageView imageHotel, ivBack, ivAdd;
+    EditText txtName, txtDescription, txtRank, txtAddress, txtPrice;
+    TextView tvSave;
 
     DatabaseReference hotelRef, roomRef;
     RecyclerView recyclerView;
@@ -39,22 +41,21 @@ public class AdminDetailHotelActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_detail_hotel);
+        setContentView(R.layout.activity_admin_edit_hotel);
 
         imageHotel = findViewById(R.id.imageHotel);
-        tvName = findViewById(R.id.tvName);
-        tvName2 = findViewById(R.id.tvName2);
-        tvDescription = findViewById(R.id.tvDescription);
-        tvRank = findViewById(R.id.tvRank);
-        tvAddress = findViewById(R.id.tvStatus);
+        txtName = findViewById(R.id.txtName);
+        txtDescription = findViewById(R.id.txtDescription);
+        txtRank = findViewById(R.id.txtRank);
+        txtAddress = findViewById(R.id.txtAddress);
         ivBack = findViewById(R.id.ivBack);
-        tvEdit = findViewById(R.id.tvEdit);
+        ivAdd = findViewById(R.id.ivAdd);
+        tvSave = findViewById(R.id.tvSave);
+        txtPrice = findViewById(R.id.txtPrice);
 
 
         roomRef = FirebaseDatabase.getInstance().getReference().child("rooms");
         hotelRef = FirebaseDatabase.getInstance().getReference().child("hotel");
-
-
 
         String HotelKey = getIntent().getStringExtra("HotelKey");
         hotelId = getIntent().getStringExtra("HotelId");
@@ -68,12 +69,11 @@ public class AdminDetailHotelActivity extends AppCompatActivity {
                         description = snapshot.child("description").getValue().toString();
                         address = snapshot.child("address").getValue().toString();
                         rank = String.valueOf(snapshot.child("rank").getValue());
-                        tvDescription.setText(description);
-                        tvRank.setText(rank);
-                        tvAddress.setText(address);
-                        tvName.setText(name);
-                        tvName2.setText(name);
-                        Glide.with(AdminDetailHotelActivity.this).load(purl).into(imageHotel);
+                        txtDescription.setText(description);
+                        txtRank.setText(rank);
+                        txtAddress.setText(address);
+                        txtName.setText(name);
+                        Glide.with(AdminEditHotelActivity.this).load(purl).into(imageHotel);
                     }
                 }
 
@@ -83,6 +83,18 @@ public class AdminDetailHotelActivity extends AppCompatActivity {
                 }
             });
         }
+
+        tvSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                hotelRef.child(HotelKey).child("name").setValue(txtName.getText().toString().trim());
+                hotelRef.child(HotelKey).child("description").setValue(txtDescription.getText().toString().trim());
+                hotelRef.child(HotelKey).child("address").setValue(txtAddress.getText().toString().trim());
+                hotelRef.child(HotelKey).child("rank").setValue(txtRank.getText().toString().trim());
+                hotelRef.child(HotelKey).child("price").setValue(Double.parseDouble(txtPrice.getText().toString().trim()));
+            }
+        });
 
 
         recyclerView = findViewById(R.id.recyclerView);
@@ -95,18 +107,16 @@ public class AdminDetailHotelActivity extends AppCompatActivity {
 
         adminRoomAdapter = new AdminRoomAdapter(options);
         recyclerView.setAdapter(adminRoomAdapter);
-
-
     }
-
     @Override
     protected void onResume() {
         super.onResume();
 
-        tvEdit.setOnClickListener(new View.OnClickListener() {
+        ivAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AdminEditHotelActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AddRoomActivity.class);
+                intent.putExtra("hotelID",hotelId);
                 startActivity(intent);
                 finish();
             }
@@ -134,5 +144,4 @@ public class AdminDetailHotelActivity extends AppCompatActivity {
     public void onStop() {
         super.onStop();
         adminRoomAdapter.stopListening();}
-
 }

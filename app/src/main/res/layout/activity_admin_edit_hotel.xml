@@ -5,11 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.admin_activites.AdminDetailHotelActivity"
-    android:orientation="vertical"
     android:layout_gravity="center"
+    android:orientation="vertical"
+    tools:context=".activities.admin_activites.AdminEditHotelActivity"
     android:fitsSystemWindows="true">
-
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -41,10 +40,10 @@
                 android:textColor="@color/white"
                 android:textSize="15sp" />
             <TextView
-                android:id="@+id/tvEdit"
+                android:id="@+id/tvSave"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Edit"
+                android:text="Save"
                 android:fontFamily="@font/semi_bold"
                 android:textSize="20sp"
                 android:textColor="@color/white"/>
@@ -80,8 +79,8 @@
 
                 </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:id="@+id/tvName"
+                <EditText
+                    android:id="@+id/txtName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -91,7 +90,8 @@
                     android:fontFamily="@font/bold"
                     android:text=""
                     android:textColor="@color/black"
-                    android:textSize="25sp" />
+                    android:textSize="25sp"
+                    android:backgroundTint="@color/gray"/>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -116,16 +116,18 @@
                                 android:layout_height="wrap_content"
                                 app:srcCompat="@drawable/ic_star" />
 
-                            <TextView
-                                android:id="@+id/tvRank"
+                            <EditText
+                                android:id="@+id/txtRank"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/medium"
                                 android:text=""
+                                android:inputType="numberDecimal"
                                 android:textColor="@color/gold"
-                                android:textSize="18sp" />
+                                android:textSize="18sp"
+                                android:backgroundTint="@color/gray"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -139,15 +141,41 @@
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/ic_location" />
 
-                            <TextView
-                                android:id="@+id/tvStatus"
+                            <EditText
+                                android:id="@+id/txtAddress"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/medium"
                                 android:text=""
-                                android:textSize="18sp" />
+                                android:textSize="18sp"
+                                android:backgroundTint="@color/gray"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="7dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_marginLeft="9dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="$"
+                                android:textColor="@color/pink"
+                                android:textSize="25sp"/>
+
+                            <EditText
+                                android:id="@+id/txtPrice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/medium"
+                                android:text=""
+                                android:textSize="18sp"
+                                android:backgroundTint="@color/gray"/>
                         </LinearLayout>
 
                     </LinearLayout>
@@ -295,17 +323,19 @@
                             android:textColor="@color/pink"
                             android:textSize="18sp" />
 
-                        <TextView
-                            android:id="@+id/tvDescription"
+                        <EditText
+                            android:id="@+id/txtDescription"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:inputType="textMultiLine"
                             android:layout_marginLeft="35dp"
                             android:layout_marginTop="5dp"
                             android:layout_marginRight="20dp"
                             android:fontFamily="@font/medium"
                             android:text=""
                             android:textColor="@color/black"
-                            android:textSize="15sp" />
+                            android:textSize="15sp"
+                            android:backgroundTint="@color/gray"/>
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -322,6 +352,13 @@
                         android:textColor="@color/pink"
                         android:textSize="18sp"
                         android:layout_marginBottom="5dp"/>
+                    <ImageView
+                        android:id="@+id/ivAdd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_add"
+                        android:backgroundTint="@color/pink"
+                        android:layout_marginLeft="10dp"/>
 
                 </LinearLayout>
 
@@ -336,6 +373,5 @@
         </ScrollView>
 
     </LinearLayout>
-
 
 </LinearLayout>

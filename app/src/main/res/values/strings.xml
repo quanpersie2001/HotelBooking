@@ -25,6 +25,8 @@
     <string name="uploading">Uploading</string>
     <string name="booking_now"> <u>Booking Now </u></string>
     <string name="inserted_data">Data inserted!</string>
+    <string name="email_is_changed">Email is changed</string>
+    <string name="profile_is_changed">Profile is changed</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

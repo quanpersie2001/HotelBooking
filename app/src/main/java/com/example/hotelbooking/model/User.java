@@ -12,7 +12,6 @@ public class User extends Person {
     private String phoneNumber;
     private String email;
     private String avatar;
-    private HashMap<String, ArrayList<Room>> history = new HashMap();
 
 
     public User(String userID, String username, String birthday, String gender, String phoneNumber, String email, String avatar) {

@@ -7,11 +7,11 @@ public class RoomBook extends Room {
     private String status;
     private String square;
 
-    public RoomBook(String hotelID, String name, String type, String purl, String price, String status, String square, String dateIn, String dateOut, String userID) {
+    public RoomBook(String hotelID, String name, String type, String purl, String price, String status, String square, String dateIn, String dateOut) {
         super(hotelID, name, type, purl, price, status, square);
         this.dateIn = dateIn;
         this.dateOut = dateOut;
-        this.userID = userID;
+
     }
 
     public String getDateIn() {
@@ -30,11 +30,4 @@ public class RoomBook extends Room {
         this.dateOut = dateOut;
     }
 
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
 }
